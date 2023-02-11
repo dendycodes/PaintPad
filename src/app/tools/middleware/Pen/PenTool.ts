@@ -3,8 +3,9 @@ import { Line } from "konva/lib/shapes/Line";
 import { Stage } from "konva/lib/Stage";
 
 export const lineDrawer = (stage: Stage, mode: string) => {
+  console.log(mode);
   var isPaint = false;
-  var mode = "brush";
+  var mode = mode;
   var lastLine: Line;
   const layer: Layer = stage.findOne("#mainLayer");
 
@@ -14,7 +15,7 @@ export const lineDrawer = (stage: Stage, mode: string) => {
 
     lastLine = new Line({
       stroke: "white",
-      strokeWidth: 5,
+      strokeWidth: 10,
       globalCompositeOperation:
         mode === "brush" ? "source-over" : "destination-out",
       lineCap: "round",
@@ -33,7 +34,6 @@ export const lineDrawer = (stage: Stage, mode: string) => {
       return;
     }
 
-    // prevent scrolling on touch devices
     e.evt.preventDefault();
     const pos = stage.getRelativePointerPosition();
     var newPoints = lastLine.points().concat([pos.x, pos.y]);

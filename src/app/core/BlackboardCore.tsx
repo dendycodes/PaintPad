@@ -8,7 +8,7 @@ import { lineDrawer, tools } from "../tools";
 const BlackboardCore = () => {
   const stageRef = useRef(null);
   const [stage, setStage] = useState<Stage>();
-  const [selected_tool, selectTool] = useState<ITool>(tools.pencil);
+  const [selected_tool, selectTool] = useState<ITool>();
 
   useEffect(() => {
     if (stageRef.current) {
@@ -24,21 +24,48 @@ const BlackboardCore = () => {
     }
   }, [stageRef]);
 
-  switch (selected_tool?.tool) {
-    case "pencil": {
-      if (stage) {
-        lineDrawer(stage, "brush");
-        stage.container().style.cursor = tools.pencil.cursor;
+  useEffect(() => {
+    switch (selected_tool?.tool) {
+      case "pencil": {
+        if (stage) {
+          lineDrawer(stage, "brush");
+          stage.container().style.cursor = tools.pencil.cursor;
+        }
+        break;
+      }
+      case "eraser": {
+        if (stage) {
+          lineDrawer(stage, "");
+          stage.container().style.cursor = tools.eraser.cursor;
+        }
+        break;
       }
     }
-    case "eraser": {
-      if (stage) {
-        lineDrawer(stage, "");
-        stage.container().style.cursor = tools.eraser.cursor;
-      }
-    }
-  }
+  }, [selected_tool]);
 
-  return <div ref={stageRef}></div>;
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "flex-start",
+        justifyContent: "center"
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          width: "700px",
+          height: "50px",
+          backgroundColor: "orange",
+          borderRadius: "0  0  25px 25px",
+          zIndex: 99999
+        }}
+      >
+        <button onClick={() => selectTool(tools.pencil)}>Pencil</button>
+        <button onClick={() => selectTool(tools.eraser)}>Eraser</button>
+      </div>
+      <div ref={stageRef}></div>
+    </div>
+  );
 };
 export default BlackboardCore;
