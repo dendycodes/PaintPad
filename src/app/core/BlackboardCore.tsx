@@ -28,14 +28,14 @@ const BlackboardCore = () => {
     switch (selected_tool?.tool) {
       case "pencil": {
         if (stage) {
-          lineDrawer(stage, "brush");
+          lineDrawer(stage, "pencil");
           stage.container().style.cursor = tools.pencil.cursor;
         }
         break;
       }
       case "eraser": {
         if (stage) {
-          lineDrawer(stage, "");
+          lineDrawer(stage, "eraser");
           stage.container().style.cursor = tools.eraser.cursor;
         }
         break;
@@ -54,7 +54,7 @@ const BlackboardCore = () => {
       <div
         style={{
           position: "absolute",
-          width: "700px",
+          width: "60%",
           height: "50px",
           backgroundColor: "orange",
           borderRadius: "0  0  25px 25px",

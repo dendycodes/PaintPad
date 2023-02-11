@@ -3,7 +3,6 @@ import { Line } from "konva/lib/shapes/Line";
 import { Stage } from "konva/lib/Stage";
 
 export const lineDrawer = (stage: Stage, mode: string) => {
-  console.log(mode);
   var isPaint = false;
   var mode = mode;
   var lastLine: Line;
@@ -17,7 +16,7 @@ export const lineDrawer = (stage: Stage, mode: string) => {
       stroke: "white",
       strokeWidth: 10,
       globalCompositeOperation:
-        mode === "brush" ? "source-over" : "destination-out",
+        mode === "pencil" ? "source-over" : "destination-out",
       lineCap: "round",
       lineJoin: "round",
       points: [pos.x, pos.y, pos.x, pos.y]
