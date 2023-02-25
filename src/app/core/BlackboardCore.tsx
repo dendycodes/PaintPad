@@ -4,6 +4,7 @@ import { ITool } from "../interfaces";
 import { Stage } from "konva/lib/Stage";
 import { Layer } from "konva/lib/Layer";
 import { lineDrawer, tools } from "../tools";
+import Toolbar from "../components/toolbar/toolbar";
 
 const BlackboardCore = () => {
   const stageRef = useRef(null);
@@ -44,27 +45,9 @@ const BlackboardCore = () => {
   }, [selected_tool]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "flex-start",
-        justifyContent: "center"
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          width: "60%",
-          height: "50px",
-          backgroundColor: "orange",
-          borderRadius: "0  0  25px 25px",
-          zIndex: 99999
-        }}
-      >
-        <button onClick={() => selectTool(tools.pencil)}>Pencil</button>
-        <button onClick={() => selectTool(tools.eraser)}>Eraser</button>
-      </div>
+    <div className="flex items-start justify-center">
       <div ref={stageRef}></div>
+      <Toolbar selectTool={selectTool} />
     </div>
   );
 };
