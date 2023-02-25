@@ -19,9 +19,7 @@ export const lineDrawer = (
       lineCap: "round",
       lineJoin: "round",
       points: [pos.x, pos.y, pos.x, pos.y],
-      pixelRatio: 1,
-      tension: 1,
-      perfectDrawEnabled: false
+      pixelRatio: 1
     });
     layer.add(lastLine);
     layer.draw();
