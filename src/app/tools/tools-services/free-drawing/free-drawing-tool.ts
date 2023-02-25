@@ -1,41 +1,46 @@
+import { IDrawingOptions } from "@/app/interfaces";
 import { Layer } from "konva/lib/Layer";
 import { Line } from "konva/lib/shapes/Line";
 import { Stage } from "konva/lib/Stage";
 
-export const lineDrawer = (stage: Stage, mode: string) => {
-  var isPaint = false;
-  var mode = mode;
-  var lastLine: Line;
+export const lineDrawer = (
+  stage: Stage,
+  mode: string,
+  drawingOptions: IDrawingOptions
+) => {
   const layer: Layer = stage.findOne("#mainLayer");
-
-  stage.on("mousedown touchstart", function (e) {
-    isPaint = true;
+  stage.on("mousedown", (e) => {
     const pos = stage.getRelativePointerPosition();
-
-    lastLine = new Line({
-      stroke: "white",
+    const lastLine = new Line({
+      stroke: drawingOptions.color,
       strokeWidth: 10,
       globalCompositeOperation:
         mode === "pencil" ? "source-over" : "destination-out",
       lineCap: "round",
       lineJoin: "round",
-      points: [pos.x, pos.y, pos.x, pos.y]
+      points: [pos.x, pos.y, pos.x, pos.y],
+      pixelRatio: 1,
+      tension: 1,
+      perfectDrawEnabled: false
     });
     layer.add(lastLine);
+    layer.draw();
+
+    stage.on("mousemove", () => startDrawing(stage, lastLine));
+    stage.on("mouseup", () => {
+      stopDrawing(stage);
+    });
   });
 
-  stage.on("mouseup touchend", function () {
-    isPaint = false;
-  });
-
-  stage.on("mousemove touchmove", function (e) {
-    if (!isPaint) {
-      return;
-    }
-
-    e.evt.preventDefault();
+  const startDrawing = (stage: Stage, line: Line) => {
     const pos = stage.getRelativePointerPosition();
-    var newPoints = lastLine.points().concat([pos.x, pos.y]);
-    lastLine.points(newPoints);
-  });
+    if (pos) {
+      const newPoints = line.points().concat([pos.x, pos.y]);
+      line.points(newPoints);
+    }
+  };
+  const stopDrawing = (stage: Stage) => {
+    stage?.off("mousemove");
+    stage?.off("mouseup");
+  };
 };
