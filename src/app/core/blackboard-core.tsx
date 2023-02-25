@@ -1,15 +1,17 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { ITool } from "../interfaces";
 import { Stage } from "konva/lib/Stage";
 import { Layer } from "konva/lib/Layer";
+import { Rect } from "konva/lib/shapes/Rect";
+
+import { Toolbar } from "../components";
+import { ITool } from "../interfaces";
 import { lineDrawer, tools } from "../tools";
-import Toolbar from "../components/toolbar/toolbar";
 
 const BlackboardCore = () => {
   const stageRef = useRef(null);
   const [stage, setStage] = useState<Stage>();
-  const [selected_tool, selectTool] = useState<ITool>();
+  const [selected_tool, selectTool] = useState<ITool | null>(null);
 
   useEffect(() => {
     if (stageRef.current) {
@@ -18,6 +20,16 @@ const BlackboardCore = () => {
         width: window.innerWidth,
         height: window.innerHeight
       });
+
+      const background = new Rect({
+        width: stage.width(),
+        height: stage.height(),
+        fill: "rgb(220,220,220)"
+      });
+
+      const backgroundLayer = new Layer({ id: "backgroundLayer" });
+      backgroundLayer.add(background);
+      stage.add(backgroundLayer);
 
       const mainLayer = new Layer({ id: "mainLayer" });
       stage.add(mainLayer);
@@ -42,12 +54,12 @@ const BlackboardCore = () => {
         break;
       }
     }
-  }, [selected_tool]);
+  }, [selected_tool, stage]);
 
   return (
     <div className="flex items-start justify-center">
       <div ref={stageRef}></div>
-      <Toolbar selectTool={selectTool} />
+      <Toolbar stage={stage} selectTool={selectTool} />
     </div>
   );
 };
