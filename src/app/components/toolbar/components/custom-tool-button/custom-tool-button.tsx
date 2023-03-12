@@ -1,15 +1,17 @@
 import { ITool } from "@/app/interfaces";
 import { tools } from "@/app/tools";
+import Image from "next/image";
 import React from "react";
 import { TwitterPicker } from "react-color";
-
 import { useRecoilState } from "recoil";
 import { drawingOptionsState } from "../../../../stores/drawing-options";
+import style from "./CustomToolButton.module.scss";
 
 interface IToolbarProps {
   selectTool: () => void;
   tool: string;
   active: ITool | null;
+  iconSource: string;
 }
 
 const CustomToolButton = (props: IToolbarProps) => {
@@ -27,7 +29,15 @@ const CustomToolButton = (props: IToolbarProps) => {
           />
         </div>
       ) : null}
-      <button onClick={props.selectTool}>{props.tool}</button>
+
+      <button className={style.tool_button} onClick={props.selectTool}>
+        <Image
+          src={props.iconSource}
+          width={30}
+          height={30}
+          alt={"tool-icon"}
+        />
+      </button>
     </div>
   );
 };
