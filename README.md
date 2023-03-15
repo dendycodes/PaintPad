@@ -19,6 +19,6 @@ yarn dev
 pnpm dev
 ```
 
-### Contributing
+### Contributing:
 
 If you'd like to contribute to PaintPad, please create a pull request with your changes. We welcome contributions of all types, including bug fixes, new features, and documentation improvements.
