@@ -5,7 +5,7 @@ import React from "react";
 import { TwitterPicker } from "react-color";
 import { useRecoilState } from "recoil";
 import { drawingOptionsState } from "../../../../stores/drawing-options";
-import style from "./CustomToolButton.module.scss";
+import style from "./custom-tool-button.module.scss";
 
 interface IToolbarProps {
   selectTool: () => void;

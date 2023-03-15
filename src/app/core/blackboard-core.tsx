@@ -42,19 +42,7 @@ const BlackboardCore = () => {
     }
   }, [stageRef]);
 
-  const cleanUPSettings = (stage: Stage) => {
-    const mainLayer: Layer = stage.findOne("#mainLayer");
-    if (mainLayer) {
-      mainLayer.off("mousedown");
-      mainLayer.off("mousemove");
-      mainLayer.off("drag");
-      mainLayer.off("dragstart");
-      mainLayer.off("mouseup");
-    }
-  };
-
   useEffect(() => {
-    stage && cleanUPSettings(stage);
     switch (selected_tool?.tool) {
       case "pencil": {
         if (stage) {
