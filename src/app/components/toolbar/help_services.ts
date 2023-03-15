@@ -7,3 +7,11 @@ export const resetBoard = (stage: Stage) => {
   const newLayer = new Layer({ id: "mainLayer" });
   stage.add(newLayer);
 };
+
+export const downloadPaint = (stage: Stage) => {
+  const imageURL = stage.toDataURL();
+  const link = document.createElement("a");
+  link.href = imageURL;
+  link.download = "painting.png";
+  link.click();
+};
