@@ -1,9 +1,17 @@
 .toolbar {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   padding: 8px;
   background-color: rgb(255, 255, 255);
   display: flex;
   gap: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
   top: 10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  cursor: move;
+  .toolbar_row {
+    display: flex;
+    gap: 10px;
+  }
 }

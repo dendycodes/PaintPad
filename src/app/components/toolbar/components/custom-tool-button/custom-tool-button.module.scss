@@ -9,6 +9,17 @@
 
   &:hover {
     background-color: rgb(229, 229, 229);
-    transform: scale(1.15);
+    transform: scale(1.1);
   }
+}
+
+.active {
+  padding: 6px;
+  border-radius: 25px;
+  border: 2px solid rgb(221, 221, 221);
+  transition: 0.2s;
+  border-radius: 50px;
+  box-shadow: inset 5px 5px 6px #bcbcbc, inset -5px -5px 6px #ffffff;
+  background-color: rgb(229, 229, 229);
+  transform: scale(1.1);
 }
