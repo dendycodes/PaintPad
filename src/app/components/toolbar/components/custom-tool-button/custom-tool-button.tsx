@@ -38,7 +38,7 @@ const CustomToolButton = (props: IToolbarProps) => {
       </button>
 
       {props.active === tools.pencil && props.tool === "Pencil" ? (
-        <div className=" absolute " style={{ top: "-2px", right: "60px" }}>
+        <div className={style.color_picker}>
           <TwitterPicker
             triangle="hide"
             onChange={(color) => {
