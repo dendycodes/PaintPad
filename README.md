@@ -11,6 +11,11 @@ PaintPad is a simple painting application that allows users to create and save d
 ### Getting Started:
 To get started with PaintPad, simply clone this repository and run the development server:
 
+
+```bash
+git clone https://github.com/denizmemduev/PaintPad.git
+```
+
 ```bash
 npm run dev
 # or
