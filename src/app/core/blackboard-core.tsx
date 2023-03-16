@@ -26,7 +26,7 @@ const BlackboardCore = () => {
       const background = new Rect({
         width: stage.width(),
         height: stage.height(),
-        fill: "rgb(220,220,220)"
+        fill: "rgb(250,250,250)"
       });
 
       const backgroundLayer = new Layer({
