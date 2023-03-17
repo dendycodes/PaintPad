@@ -26,7 +26,7 @@ const BlackboardCore = () => {
       const background = new Rect({
         width: stage.width(),
         height: stage.height(),
-        fill: "rgb(250,250,250)"
+        fill: "rgb(255,255,255)"
       });
 
       const backgroundLayer = new Layer({
@@ -62,9 +62,9 @@ const BlackboardCore = () => {
   }, [selected_tool, stage, drawingOptions]);
 
   return (
-    <div className="flex items-start justify-center">
-      <div ref={stageRef}></div>
+    <div>
       <Toolbar stage={stage} selectTool={selectTool} active={selected_tool} />
+      <div className="ml-[140px]" ref={stageRef}></div>
     </div>
   );
 };

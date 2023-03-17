@@ -1,0 +1,18 @@
+.color_picker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+
+  .current_color {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    border: 2spx solid rgba(214, 214, 214, 0.281);
+  }
+  .circle_picker {
+    width: 130px !important;
+  }
+}
