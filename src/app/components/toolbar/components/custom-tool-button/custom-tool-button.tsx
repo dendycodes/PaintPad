@@ -26,9 +26,10 @@ const CustomToolButton = (props: IToolbarProps) => {
       >
         <Image
           src={props.iconSource}
-          width={30}
-          height={30}
+          width={40}
+          height={40}
           alt={"tool-icon"}
+          className={style.icon}
         />
       </button>
 
