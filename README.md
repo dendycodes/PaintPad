@@ -1,4 +1,4 @@
-# PaintPad
+# 🎨 PaintPad 
 PaintPad is a simple painting application that allows users to create and save digital artwork. It provides a variety of painting tools and colors, and is easy to use for both beginners and experienced artists.
 
 ### Features:
