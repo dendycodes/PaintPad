@@ -2,9 +2,7 @@ import { ITool } from "@/app/interfaces";
 import { tools } from "@/app/tools";
 import Image from "next/image";
 import React from "react";
-import { TwitterPicker } from "react-color";
-import { useRecoilState } from "recoil";
-import { drawingOptionsState } from "../../../../stores/drawing-options";
+
 import classNames from "classnames";
 import style from "./custom-tool-button.module.scss";
 
@@ -17,9 +15,6 @@ interface IToolbarProps {
 }
 
 const CustomToolButton = (props: IToolbarProps) => {
-  const [drawingOptions, setDrawingOptions] =
-    useRecoilState(drawingOptionsState);
-
   return (
     <div className=" relative ">
       <button
@@ -31,22 +26,16 @@ const CustomToolButton = (props: IToolbarProps) => {
       >
         <Image
           src={props.iconSource}
-          width={30}
-          height={30}
+          width={40}
+          height={40}
           alt={"tool-icon"}
+          className={style.icon}
         />
       </button>
 
-      {props.active === tools.pencil && props.tool === "Pencil" ? (
-        <div className={style.color_picker}>
-          <TwitterPicker
-            triangle="hide"
-            onChange={(color) => {
-              setDrawingOptions({ color: color.hex });
-            }}
-          />
-        </div>
-      ) : null}
+      {/* {props.active === tools.pencil && props.tool === "Pencil" ? (
+        <div className={style.color_picker}></div>
+      ) : null} */}
     </div>
   );
 };

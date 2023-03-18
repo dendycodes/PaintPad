@@ -8,6 +8,7 @@ import { ITool } from "../interfaces";
 import { lineDrawer, tools } from "../tools";
 import { useRecoilValue } from "recoil";
 import { drawingOptionsState } from "../stores/drawing-options";
+import { clearStage } from "../services/services";
 
 const BlackboardCore = () => {
   const stageRef = useRef(null);
@@ -26,7 +27,7 @@ const BlackboardCore = () => {
       const background = new Rect({
         width: stage.width(),
         height: stage.height(),
-        fill: "rgb(250,250,250)"
+        fill: "rgb(255,255,255)"
       });
 
       const backgroundLayer = new Layer({
@@ -43,28 +44,31 @@ const BlackboardCore = () => {
   }, [stageRef]);
 
   useEffect(() => {
-    switch (selected_tool?.tool) {
-      case "pencil": {
-        if (stage) {
-          lineDrawer(stage, "pencil", drawingOptions);
-          stage.container().style.cursor = tools.pencil.cursor;
+    if (stage) {
+      clearStage(stage);
+      switch (selected_tool?.tool) {
+        case tools.pencil.tool: {
+          if (stage) {
+            lineDrawer(stage, "source-over", drawingOptions);
+            stage.container().style.cursor = tools.pencil.cursor;
+          }
+          break;
         }
-        break;
-      }
-      case "eraser": {
-        if (stage) {
-          lineDrawer(stage, "eraser", drawingOptions);
-          stage.container().style.cursor = tools.eraser.cursor;
+        case tools.eraser.tool: {
+          if (stage) {
+            lineDrawer(stage, "destination-out", drawingOptions);
+            stage.container().style.cursor = tools.eraser.cursor;
+          }
+          break;
         }
-        break;
       }
     }
-  }, [selected_tool, stage, drawingOptions]);
+  }, [selected_tool, drawingOptions]);
 
   return (
-    <div className="flex items-start justify-center">
-      <div ref={stageRef}></div>
+    <div>
       <Toolbar stage={stage} selectTool={selectTool} active={selected_tool} />
+      <div className="ml-[140px]" ref={stageRef}></div>
     </div>
   );
 };
