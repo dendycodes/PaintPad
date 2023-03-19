@@ -7,12 +7,18 @@ import style from "./color-section.module.scss";
 interface IColorPickerProps {
   current_color: string;
   setDrawingOptions: SetterOrUpdater<IDrawingOptions>;
+  drawingOptions: IDrawingOptions;
 }
 
 const ColorPicker = ({
   current_color,
-  setDrawingOptions
+  setDrawingOptions,
+  drawingOptions
 }: IColorPickerProps) => {
+  const updateCurrentColor = (key: string, value: string) => {
+    setDrawingOptions({ ...drawingOptions, [key]: value });
+  };
+
   return (
     <div className={style.color_picker}>
       <div
@@ -24,7 +30,7 @@ const ColorPicker = ({
       <CirclePicker
         className={style.circle_picker}
         onChange={(color) => {
-          setDrawingOptions({ color: color.hex });
+          updateCurrentColor("color", color.hex);
         }}
       />
     </div>

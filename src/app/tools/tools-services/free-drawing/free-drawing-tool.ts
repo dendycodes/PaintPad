@@ -21,7 +21,7 @@ const initDrawing = (
   const pos = stage.getRelativePointerPosition();
   const lastLine = new Line({
     stroke: drawingOptions.color,
-    strokeWidth: 10,
+    strokeWidth: drawingOptions.strokeWidth,
     globalCompositeOperation: mode,
     lineCap: "round",
     points: [pos.x, pos.y, pos.x, pos.y],
@@ -36,7 +36,7 @@ const initDrawing = (
     startDrawing(stage, lastLine);
   });
   stage.on("mouseup", () => {
-    return stopDrawing(stage);
+    stopDrawing(stage);
   });
 };
 

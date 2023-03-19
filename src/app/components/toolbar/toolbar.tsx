@@ -9,6 +9,7 @@ import eraserIcon from "public/assets/toolbar-svg/eraser-svgrepo-com.svg";
 import pencilIcon from "public/assets/toolbar-svg/pencil-svgrepo-com.svg";
 import clearIcon from "public/assets/toolbar-svg/undo-svgrepo-com.svg";
 import downloadIcon from "public/assets/toolbar-svg/download-svgrepo-com.svg";
+import markerIcon from "public/assets/toolbar-svg/marker-svgrepo-com.svg";
 import style from "./toolbar.module.scss";
 
 import { useRecoilState } from "recoil";
@@ -23,15 +24,38 @@ interface IToolbarProps {
 const Toolbar = (props: IToolbarProps) => {
   const [drawingOptions, setDrawingOptions] =
     useRecoilState(drawingOptionsState);
+
+  const updateCurrentStrokeWidth = (key: string, value: number) => {
+    setDrawingOptions({ ...drawingOptions, [key]: value });
+  };
+
   return (
     <div className={style.toolbar}>
       <div className={style.tools}>
         <CustomToolButton
-          selectTool={() => props.selectTool(tools.pencil)}
+          selectTool={() => {
+            props.selectTool(tools.pencil);
+            updateCurrentStrokeWidth("strokeWidth", 2);
+          }}
           tool="Pencil"
           active={props.active}
           iconSource={pencilIcon}
-          activityIndicator={props.active?.tool === "pencil" ? true : false}
+          activityIndicator={
+            props.active?.tool === tools.pencil.tool ? true : false
+          }
+        />
+
+        <CustomToolButton
+          selectTool={() => {
+            props.selectTool(tools.marker);
+            updateCurrentStrokeWidth("strokeWidth", 10);
+          }}
+          tool="Marker"
+          active={props.active}
+          iconSource={markerIcon}
+          activityIndicator={
+            props.active?.tool === tools.marker.tool ? true : false
+          }
         />
 
         <CustomToolButton
@@ -39,7 +63,9 @@ const Toolbar = (props: IToolbarProps) => {
           tool="Eraser"
           active={props.active}
           iconSource={eraserIcon}
-          activityIndicator={props.active?.tool === "eraser" ? true : false}
+          activityIndicator={
+            props.active?.tool === tools.eraser.tool ? true : false
+          }
         />
 
         <CustomToolButton
@@ -65,6 +91,7 @@ const Toolbar = (props: IToolbarProps) => {
       <ColorPicker
         current_color={drawingOptions.color}
         setDrawingOptions={setDrawingOptions}
+        drawingOptions={drawingOptions}
       />
     </div>
   );

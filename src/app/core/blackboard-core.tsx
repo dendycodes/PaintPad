@@ -47,6 +47,7 @@ const BlackboardCore = () => {
     if (stage) {
       clearStage(stage);
       switch (selected_tool?.tool) {
+        case tools.marker.tool:
         case tools.pencil.tool: {
           if (stage) {
             lineDrawer(stage, "source-over", drawingOptions);
@@ -63,6 +64,8 @@ const BlackboardCore = () => {
         }
       }
     }
+
+    console.log(selected_tool);
   }, [selected_tool, drawingOptions]);
 
   return (

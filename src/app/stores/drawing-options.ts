@@ -3,7 +3,7 @@ import { IDrawingOptions } from "../interfaces";
 
 export const drawingOptionsState = atom({
   key: "drawingOptionsState",
-  default: { color: "#FF6900" } as IDrawingOptions
+  default: { color: "#FF6900", strokeWidth: 2 } as IDrawingOptions
 });
 
 export const drawingSelector = selector({
