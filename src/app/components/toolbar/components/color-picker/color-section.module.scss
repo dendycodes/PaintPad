@@ -5,6 +5,11 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  span {
+    div {
+      margin: 0px !important;
+    }
+  }
 
   .current_color {
     width: 60px;
@@ -13,6 +18,8 @@
     border: 2spx solid rgba(214, 214, 214, 0.281);
   }
   .circle_picker {
-    width: 130px !important;
+    width: 115px !important;
+    gap: 7px;
+    padding-bottom: 20px;
   }
 }

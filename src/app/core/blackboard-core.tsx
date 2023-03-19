@@ -68,7 +68,7 @@ const BlackboardCore = () => {
   return (
     <div>
       <Toolbar stage={stage} selectTool={selectTool} active={selected_tool} />
-      <div className="ml-[140px]" ref={stageRef}></div>
+      <div className="ml-[120px]" ref={stageRef}></div>
     </div>
   );
 };
