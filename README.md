@@ -1,5 +1,5 @@
-# 🎨 PaintPad 
-PaintPad is a simple painting application that allows users to create and save digital artwork. It provides a variety of painting tools and colors, and is easy to use for both beginners and experienced artists.
+# 🎨 Paint Pad 
+Paint Pad is a simple painting application that allows users to create and save digital artwork. It provides a variety of painting tools and colors, and is easy to use for both beginners and experienced artists.
 
 ### Features:
 - Painting tools: Choose from a variety of painting tools, including brushes, pencils, shapes, and markers.
@@ -26,4 +26,4 @@ pnpm dev
 
 ### Contributing:
 
-If you'd like to contribute to PaintPad, please create a pull request with your changes. We welcome contributions of all types, including bug fixes, new features, and documentation improvements.
+If you'd like to contribute to Paint Pad, please create a pull request with your changes. We welcome contributions of all types, including bug fixes, new features, and documentation improvements.
