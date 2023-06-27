@@ -24,7 +24,7 @@ yarn dev
 pnpm dev
 ```
 
-## Technologies Used
+### Technologies Used
 
 This project was created with:
 
