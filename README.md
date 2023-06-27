@@ -24,6 +24,14 @@ yarn dev
 pnpm dev
 ```
 
+## Technologies Used
+
+This project was created with:
+
+- [Next.js](https://nextjs.org/)
+- [Konva.js](https://konvajs.org/)
+
+
 ### Contributing:
 
 If you'd like to contribute to Paint Pad, please create a pull request with your changes. We welcome contributions of all types, including bug fixes, new features, and documentation improvements.
